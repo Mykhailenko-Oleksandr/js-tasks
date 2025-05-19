@@ -4,6 +4,8 @@
 // const secondElement = fruits[1];
 // const lastElement = fruits[3];
 
+// const { createContext } = require("react");
+
 
 // Перевизначення елемента масиву
 // fruits[1] = "peach";
@@ -197,3 +199,165 @@
 // }
 // createArrayOfNumbers(1, 3);
 // console.log(createArrayOfNumbers);
+
+
+// Задача
+// Функція calculateTotalPrice(order) приймає один параметр order - масив чисел. Доповни функцію так,
+// щоб вона повертала загальну суму елементів з масиву order.
+
+// function calculateTotalPrice(order) {
+//     let sumOrder = 0;
+//     for (let i = 0; i < order.length; i++) {
+//         sumOrder = sumOrder + order[i];
+//     }
+//     return calculateTotalPrice = sumOrder;
+// }
+// calculateTotalPrice([164, 48, 291])
+// console.log(calculateTotalPrice);
+
+
+// Задача
+// Функція getEvenNumbers(start, end) має два параметри start та end, які є цілими числами. Доповни код функції
+// так, щоб вона повертала масив усіх парних чисел від start до end. Якщо жодного парного числа немає, то масив
+//  має бути пустим. Парним вважається число, яке ділиться на 2 без остачі (10 % 2 === 0). Використовуй цикл for.
+
+// function getEvenNumbers(start, end) {
+//     const numbers = [];
+//     for (let i = start; i <= end; i++) {
+//         if (i % 2 === 0) {
+//             numbers.push(i);
+//         }
+//     }
+//     return getEvenNumbers = numbers;
+// }
+// getEvenNumbers(3, 11);
+// console.log(getEvenNumbers);
+
+
+// Метод includes()
+// Метод масиву includes() використовується для перевірки наявності певного елемента в масиві. Він повертає
+// логічне значення true, якщо елемент знайдено в масиві, і false, якщо елемент відсутній.
+
+// Задача
+// Функція checkStorage(storage, item) приймає два параметри:
+// storage - масив рядків, що описує доступні товари на складі
+// item - рядок з назвою товара, наявність якого потрібно перевірити
+// Доповни код функції таким чином, щоб вона перевіряла, чи присутній такий товар в масиві storage і повертала:
+// рядок "<item> is available to order!", де item - це назва товара, якщо товар було знайдено
+// рядок "Sorry! We are out of stock!", якщо такого товара немає в масиві
+// Зроби так, щоб пошук за ім'ям товару був незалежний від регістру, тобто наприклад "plum" і "pLuM" мають бути
+// знайдені у масиві["apple", "plum", "pear"].
+
+// function checkStorage(storage, item) {
+//     if (storage.includes(item.toLowerCase())) {
+//         return checkStorage = `${item.toLowerCase()} is available to order!`;
+//     } else {
+//         return checkStorage = "Sorry! We are out of stock!";
+// }
+// }
+// checkStorage(["apple", "plum", "pear"], "pEAr");
+// console.log(checkStorage);
+
+
+// Задача
+// Перед розв'язанням цієї задачі варто зазначити, що таке спільні елементи. Спільними елементами масивів називають
+// ті елементи, які присутні у всіх масивах.Наприклад, у двох масивах[1, 3, 5] і[0, 8, 5, 3] спільними будуть
+// числа 3 і 5, оскільки вони присутні в обох вхідних масивах.А числа 0, 1 і 8 присутні тільки в одному з масивів.
+// Функція getCommonElements(array1, array2), приймає два масиви (array1 та array2) довільної довжини в якості параметрів.
+// Доповни код функції:
+// Створи порожній масив для зберігання нового масиву.
+// Використай цикл for для ітерації кожного елемента у array1.
+// У тілі циклу перевір, чи поточний елемент існує у array2 за допомогою методу includes.
+// Якщо він існує, то додай елемент до нового масиву.
+// Поверни наповнений масив спільних елементів як результат роботи функції.
+
+// function getCommonElements(array1, array2) {
+//     const array3 = [];
+//     for (let i = 0; i <= array1.length; i++) {
+//         if (array2.includes(array1[i])) {
+//             array3.push(array1[i]);
+//         }
+//     }
+//     return getCommonElements = array3;
+// }
+// getCommonElements([10, 20, 30, 40], [4, 30, 17, 10, 40]);
+// console.log(getCommonElements);
+
+
+// Цикл for...of
+// Цикл for...of — це зручний спосіб перебору масиву.Тіло циклу буде виконуватися на кожному елементі масиву.
+// Це гарна заміна циклу for, якщо не потрібен доступ до лічильника.
+
+// const planets = ["Earth", "Mars", "Venus"];
+// for (const planet of planets) {
+//   console.log(planet);
+// }
+
+// Задача
+// Доповни код функції calculateTotalPrice(order) так, щоб вона повертала загальну суму чисел в масиві order.
+// Використай цикл for...of для перебору масиву.
+
+// function calculateTotalPrice(order) {
+//     let total = 0;
+//     for (const number of order) {
+//         total += number;
+//     }
+//     return calculateTotalPrice = total;
+// }
+// calculateTotalPrice([12, 85, 37, 4]);
+// console.log(calculateTotalPrice);
+
+
+// Функції (частина 2)
+
+// Псевдомасив arguments
+// Доступ до списку всіх аргументів можна отримати за допомогою спеціальної змінної arguments.Коли ти викликаєш
+// функцію з аргументами, arguments автоматично створюється всередині цієї функції і заповнюється переданими
+// значеннями аргументів.
+// function sum(a, b) {
+//     console.log(arguments);
+//     return a + b;
+//   }
+//   sum(2, 5);
+  
+
+// метод Array.from()
+// створить масив із псевдомасиву
+// function foo() {
+//     // У змінній args буде повноцінний масив з усіх аргументів
+//     const args = Array.from(arguments);
+//       return args.join("-");
+//   }
+// foo(1, 2, 3); // Поверне "1-2-3"
+  
+// Задача
+// Функція createReversedArray() може приймати довільну кількість аргументів.Доповни код функції так, щоб вона
+// повертала масив усіх аргументів, але в масиві вони повинні йти у зворотному порядку.Тобто, при виклику
+// createReversedArray(1, 2, 3), функція має повернути масив[3, 2, 1].Використовуй цикл або метод масиву toReversed(),
+//     який застосовується до масиву і результатом роботи повертає новий масив з елементами у зворотньому порядку.
+
+// function createReversedArray() {
+//     const args = Array.from(arguments).toReversed();
+//     return args;
+// }
+// createReversedArray(1, 2, 3, 4, 5);
+// console.log(createReversedArray(1, 2, 3, 4, 5));
+
+
+// Параметри за замовчуванням
+// function greet(username = "Guest") {
+//     console.log(`Hello, ${username}!`);
+//   }
+//   greet("Jacob"); // "Hello, Jacob!"
+//   greet();        // "Hello, Guest!"
+  
+// Задача
+// Функція calculateTax(amount, taxRate) оголошує два параметри:
+// amount - число, сума від якої потрібно обчислити податок. Обов'язковий параметр.
+// taxRate - число, податкова ставка. Необов'язковий параметр. За замовчуванням його значення має бути 0.2.
+// Доповни код функції так, щоб вона повертала суму податку - результат множення суми на податкову ставку.
+
+// function calculateTax(amount, taxRate = 0.2) {
+//     return amount * taxRate;
+// }
+// console.log(calculateTax(100));
