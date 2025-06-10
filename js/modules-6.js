@@ -1,4 +1,5 @@
-// Метод call(), Метод apply(), Метод bind(), this, Метод Object.create(obj), метод isPrototypeOf(), метод obj.hasOwnProperty(key), Ланцюжки прототипів,
+// Метод call(), Метод apply(), Метод bind(), this, Метод Object.create(obj), метод isPrototypeOf(),
+// метод obj.hasOwnProperty(key), Ланцюжки прототипів, Класи, метод constructor
 
 
 // Метод call()
@@ -271,3 +272,147 @@
 // child.age = 27;
 
 // console.log(child);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// Класи
+
+// class User {
+//     // Тіло класу
+//   }
+  
+// Класи прийнято називати з великої літери, а в назві відображати тип об'єкта (іменника), що створюється.
+
+// А як створити з класу екземпляр?
+//     Після того як клас було оголошено, можна створити його екземпляр за допомогою спеціального оператора new, поставивши
+// його перед викликом класу.Результатом виклику new User() буде екземпляр класу User.Він буде містити дані і мати поведінку,
+//     що описані у класі.
+
+// class User {
+//   // Тіло класу
+// }
+
+// const mango = new User();
+// console.log(mango); // {}
+
+// const poly = new User();
+// console.log(poly); // {}
+
+
+
+
+
+// метод constructor
+
+// Для ініціалізації екземпляра класу використовується метод constructor.
+// class User {
+//     // Синтаксис оголошення методу класу
+//     constructor() {
+//           // ...
+//     }
+//   }
+  
+
+// Зверни увагу, що метод constructor викликається в контексті створюваного екземпляра.
+
+// class User {
+//   constructor(name, email) {
+//     // Ініціалізація властивостей екземпляра
+//     this.name = name;
+//     this.email = email;
+//   }
+// }
+
+// const mango = new User("Mango", "mango@mail.com");
+// console.log(mango); // { name: 'Mango', email: 'mango@mail.com' }
+
+// const poly = new User("Poly", "poly@mail.com");
+// console.log(poly); // { name: 'Poly', email: 'poly@mail.com' }
+
+
+// Таким чином, this усередині конструктора посилається на новостворений об'єкт.
+
+
+// class Car {
+//     constructor(brand, model, price) {
+//         this.brand = brand,
+//             this.model = model,
+//             this.price = price;
+//     }
+// }
+// const jeep = new Car("Jeep", "Compass", 16500)
+
+// console.log(jeep);
+// console.log(new Car("Audi", "Q3", 36000));
+
+  
+
+
+// Об'єкт параметрів
+
+// Клас може приймати велику кількість вхідних даних для властивостей майбутнього об'єкта.
+// До них також можна застосувати патерн «Об'єкт параметрів», передаючи один об'єкт з логічно іменованими властивостями,
+//     замість непов'язаного набору аргументів.
+
+// class User {
+//   constructor(params) {
+//     this.name = params.name;
+//     this.email = params.email;
+//   }
+// }
+
+// const mango = new User({
+//   name: "Mango",
+//   email: "mango@mail.com",
+// });
+
+// console.log(mango);
+// // { name: "Mango", email: "mango@mail.com" }
+
+
+
+
+// Методи класу
+// це функції, які будуть доступні екземпляру в його прототипі. Вони оголошуються в довільному порядку після конструктора.
+// На відміну від синтаксису методів об'єкта (вони розділяються комою), методи класу не розділені жодними спеціальними символами.
+
+// class User {
+//     constructor(params) {
+//       this.name = params.name;
+//       this.email = params.email;
+//     }
+  
+//     // Метод getEmail
+//     getEmail() {
+//           // ...
+//     }
+  
+//     // Метод changeEmail
+//     changeEmail(newEmail) {
+//           // ...
+//     }
+//   }
+  
+
+
+class Car {
+    constructor(params) {
+        this.brand = params.brand;
+        this.model = params.model;
+        this.price = params.price;
+    }
+    getPrice() {
+        return this.price;
+    }
+    changePrice(newPrice) {
+        this.price = newPrice;
+    }
+}
+const jeep = new Car("Jeep", "Compass", 16500)
+
+
+console.log(Car);
