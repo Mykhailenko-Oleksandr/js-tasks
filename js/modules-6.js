@@ -1,5 +1,6 @@
 // Метод call(), Метод apply(), Метод bind(), this, Метод Object.create(obj), метод isPrototypeOf(),
-// метод obj.hasOwnProperty(key), Ланцюжки прототипів, Класи, метод constructor
+// метод obj.hasOwnProperty(key), Ланцюжки прототипів, Класи, метод constructor, Геттери і сеттери,
+// Приватні властивості і методи, Статичні властивості, extends, super(args)
 
 
 // Метод call()
@@ -284,7 +285,7 @@
 // class User {
 //     // Тіло класу
 //   }
-  
+
 // Класи прийнято називати з великої літери, а в назві відображати тип об'єкта (іменника), що створюється.
 
 // А як створити з класу екземпляр?
@@ -315,7 +316,7 @@
 //           // ...
 //     }
 //   }
-  
+
 
 // Зверни увагу, що метод constructor викликається в контексті створюваного екземпляра.
 
@@ -349,7 +350,7 @@
 // console.log(jeep);
 // console.log(new Car("Audi", "Q3", 36000));
 
-  
+
 
 
 // Об'єкт параметрів
@@ -380,39 +381,402 @@
 // це функції, які будуть доступні екземпляру в його прототипі. Вони оголошуються в довільному порядку після конструктора.
 // На відміну від синтаксису методів об'єкта (вони розділяються комою), методи класу не розділені жодними спеціальними символами.
 
-// class User {
+// class Car {
 //     constructor(params) {
-//       this.name = params.name;
-//       this.email = params.email;
+//         this.brand = params.brand;
+//         this.model = params.model;
+//         this.price = params.price;
 //     }
-  
-//     // Метод getEmail
+//     getPrice() {
+//         return this.price;
+//     }
+//     changePrice(newPrice) {
+//         this.price = newPrice;
+//     }
+// }
+// const jeep = new Car({
+//     brand: "Jeep",
+//     model: "Compass",
+//     price: 16500
+// })
+
+// jeep.changePrice(18000)
+// console.log(jeep.getPrice());
+// console.log(jeep);
+
+
+
+
+// Приватні властивості
+
+// Інший розробник, який користується цим класом, має отримувати доступ тільки до публічного
+// інтерфейсу — набору публічних властивостей і методів класу.
+
+//     Припустимо, що пошта користувача повинна бути недоступною для прямої зміни ззовні, тобто приватною.
+//     Додаючи до імені властивості на початку символ #, ми робимо її приватною.Оголошення приватної властивості
+//     до ініціалізації в конструкторі є обов'язковим.
+
+// class User {
+//     // Необов'язкове оголошення публічних властивостей
+//     name;
+//     // Обов'язкове оголошення приватних властивостей
+//     #email;
+
+//     constructor(params) {
+//         this.name = params.name;
+//         this.#email = params.email;
+//     }
+// }
+
+// const mango = new User({
+//     name: "Mango",
+//     email: "mango@mail.com",
+// });
+// console.log(mango.name); // "Mango"
+// console.log(mango.#email); // Виникне помилка, це приватна властивість
+
+
+// Для того щоб отримати або змінити значення приватної властивості використовуються публічні методи.
+
+
+// class User {
+//     name;
+//     #email;
+
+//     constructor(params) {
+//         this.name = params.name;
+//         this.#email = params.email;
+//     }
+
 //     getEmail() {
-//           // ...
+//         return this.#email;
 //     }
-  
-//     // Метод changeEmail
+
 //     changeEmail(newEmail) {
-//           // ...
+//         this.#email = newEmail;
 //     }
-//   }
-  
+// }
+
+// const mango = new User({
+//     name: "Mango",
+//     email: "mango@mail.com",
+// });
+
+// console.log(mango.getEmail()); // "mango@mail.com"
+// mango.changeEmail("mango@supermail.com");
+// console.log(mango.getEmail()); // "mango@supermail.com"
 
 
-class Car {
-    constructor(params) {
-        this.brand = params.brand;
-        this.model = params.model;
-        this.price = params.price;
-    }
-    getPrice() {
-        return this.price;
-    }
-    changePrice(newPrice) {
-        this.price = newPrice;
-    }
-}
-const jeep = new Car("Jeep", "Compass", 16500)
 
 
-console.log(Car);
+// Приватні методи
+
+// class User {
+//     name;
+//     #email;
+
+//     constructor(params) {
+//         this.name = params.name;
+//         this.#email = params.email;
+//     }
+
+//     // Публічний метод для отримання електронної пошти
+//     getEmail() {
+//         return this.#email;
+//     }
+
+//     // Публічний метод для зміни електронної пошти
+//     changeEmail(newEmail) {
+//         if (this.#validateEmail(newEmail)) {
+//             this.#email = newEmail;
+//         } else {
+//             console.log('Invalid email format');
+//         }
+//     }
+
+//     // Приватний метод для валідації електронної пошти
+//     #validateEmail(email) {
+//         return email.includes('@');
+//     }
+// }
+
+// const mango = new User({
+//     name: 'Mango',
+//     email: 'mango@mail.com',
+// });
+
+// // Спробуємо змінити електронну пошту
+// mango.changeEmail('newmail.com'); // "Invalid email format"
+// mango.changeEmail('new@mail.com');
+// console.log(mango.getEmail()); // "new@mail.com"
+
+// // Прямий виклик приватного методу ззовні призведе до помилки
+// mango.#validateEmail('test'); // Помилка
+
+
+
+
+// Геттери і сеттери
+
+// class User {
+//     #email;
+
+//     constructor(params) {
+//         this.name = params.name;
+//         this.#email = params.email;
+//     }
+
+//     // Геттер email
+//     get email() {
+//         return this.#email;
+//     }
+
+//     // Сеттер email
+//     set email(newEmail) {
+//         this.#email = newEmail;
+//     }
+// }
+
+
+// Геттер і сеттер повинні називатися однаково.
+// Краще називати геттери і сеттери так само, як і властивість, з якою вони працюють.Геттер може
+// існувати без сеттера, так само як і сеттер без геттера.
+
+// const mango = new User({
+//     name: "Mango",
+//     email: "mango@mail.com"
+// });
+
+// console.log(mango.email); // mango@mail.com
+
+// mango.email = "mango@supermail.com";
+
+// console.log(mango.email); // mango@supermail.com
+
+// Звертаючись до mango.email, викликається геттер get email() {... } і виконується його код.
+// При спробі запису mango.email = "mango@supermail.com" викликається сеттер set email(newEmail) {... },
+// і рядок "mango@supermail.com" буде значенням параметра newEmail.
+
+
+// Геттери і сеттери доречно використовувати для простих операцій читання та зміни значення властивостей,
+//     особливо приватних, як їх публічний інтерфейс.Для роботи з властивістю, яка зберігає масив або
+//      об'єкт, вони не підійдуть.
+
+
+
+
+
+// Статичні властивості
+
+// Крім публічних і приватних властивостей майбутнього екземпляра, у класі можна оголосити його власні властивості.
+//     Властивості, що доступні тільки класові, але не його екземплярам — це статичні властивості.Вони корисні для
+//     зберігання інформації, що стосується класу.
+
+// Статичні властивості оголошуються в тілі класу.Перед ім'ям властивості додається ключове слово static.
+// Статичні властивості можна використовувати як у методах класу, так і поза класом.
+
+// class MyClass {
+//     static myProp = "value";
+// }
+
+// console.log(MyClass.myProp); // "value"
+
+
+// У екземпляра немає доступу до статичних властивостей класу.
+
+
+// Додамо класу користувача приватну властивість role — його роль, що визначає набір прав, наприклад:
+// адміністратор, редактор, звичайний користувач тощо.Можливі ролі користувачів будемо зберігати як статичну
+// властивість roles — об'єкт із властивостями.
+
+// class User {
+//     static roles = {
+//         admin: "admin",
+//         editor: "editor",
+//         basic: "basic"
+//     };
+
+//     #email;
+//     #role;
+
+//     constructor(params) {
+//         this.#email = params.email;
+//         this.#role = params.role || User.roles.basic;
+//     }
+
+//     get role() {
+//         return this.#role;
+//     }
+
+//     set role(newRole) {
+//         this.#role = newRole;
+//     }
+// }
+
+// const mango = new User({
+//     email: "mango@mail.com",
+//     role: User.roles.admin,
+// });
+
+// console.log(mango.role); // "admin"
+// mango.role = User.roles.editor;
+// console.log(mango.role); // "editor"
+
+
+
+// Виконай рефакторинг класу Car.Додай публічну статичну властивість maxPrice зі значенням число 50000 -
+//     максимально допустима ціна автомобіля.
+
+// Додай сеттеру price перевірку значення параметра newPrice, що передається.Якщо воно більше за maxPrice,
+//     сеттер нічого не робить, а якщо менше або дорівнює, то перезаписує ціну автомобіля.
+
+// Під оголошенням класу ми додали ініціалізації екземплярів і виклики методів, щоб показати, як будуть
+// використовуватися геттери і сеттери price.
+
+
+
+
+// Статичні методи
+
+// У класі можна оголосити не тільки методи майбутнього екземпляра, а й статичні методи.Статичні методи — це методи, доступні тільки класу.
+// Вони можуть бути публічні та приватні.
+
+// class User {
+//     static #takenEmails = [];
+
+//     static isEmailTaken(email) {
+//         return User.#takenEmails.includes(email);
+//     }
+
+//     #email;
+
+//     constructor(params) {
+//         this.#email = params.email;
+//         User.#takenEmails.push(params.email);
+//     }
+// }
+
+// const mango = new User({ email: "mango@mail.com" });
+
+// console.log(User.isEmailTaken("poly@mail.com")); // false
+// console.log(User.isEmailTaken("mango@mail.com")); // true
+
+
+// Особливість статичних методів
+// Під час їх виклику ключове слово this посилається на сам клас.Це означає, що статичний метод може отримати доступ до статичних
+// властивостей класу, але не до властивостей екземпляра.Це логічно, адже статичні методи викликає сам клас, а не його екземпляри.
+
+
+// Задача
+
+// Додай класу Car публічний статичний метод checkPrice(price), що приймає ціну автомобіля.Метод повинен порівняти значення
+// параметра price і приватної статичної властивості maxPrice.
+
+// Якщо ціна автомобіля перевищує максимальну, метод повинен повернути рядок "Error! Price exceeds the maximum".
+// В іншому випадку метод повинен повернути рядок "Success! Price is within acceptable limits".
+
+// class Car {
+//     static #maxPrice = 50000;
+//     static checkPrice(price) {
+//         return this.#maxPrice < price ?
+//             "Error! Price exceeds the maximum" :
+//             "Success! Price is within acceptable limits";
+//     }
+
+//     constructor(params) {
+//         this.price = params.price;
+//     }
+// }
+
+// const audi = new Car({ price: 36000 });
+// const bmw = new Car({ price: 64000 });
+
+// console.log(Car.checkPrice(audi.price)); // "Success! Price is within acceptable limits"
+// console.log(Car.checkPrice(bmw.price)); // "Error! Price exceeds the maximum"
+
+
+
+
+
+// Наслідування класів
+
+// Ключове слово extends дозволяє реалізувати наслідування класів, коли один клас(дочірній, похідний) наслідує властивості й методи
+// іншого класу(батьківського).
+// Розгляньмо приклад:
+
+// class Parent { }
+
+// class Child extends Parent {
+//     // ...
+// }
+
+
+// class User {
+//     #email;
+
+//     constructor(email) {
+//         this.#email = email;
+//     }
+
+//     get email() {
+//         return this.#email;
+//     }
+
+//     set email(newEmail) {
+//         this.#email = newEmail;
+//     }
+// }
+
+// class ContentEditor extends User {
+//     // Тіло класу ContentEditor
+// }
+
+// const editor = new ContentEditor("mango@mail.com");
+// console.log(editor); // { #email: "mango@mail.com" }
+// console.log(editor.email); // "mango@mail.com"
+
+// Клас ContentEditor наслідує від класу User його конструктор, геттер і сеттер email, а також приватну властивість #email.
+
+
+
+
+// Конструктор дочірнього класу
+
+// У конструкторі дочірнього класу необхідно викликати спеціальну функцію super(args) — це псевдонім конструктора батьківського класу.
+// В іншому випадку при спробі звернутися до this у конструкторі дочірнього класу виникне помилка.
+// Під час виклику конструктора батьківського класу передаємо необхідні йому аргументи для ініціалізації властивостей.
+
+// class User {
+//     #email;
+
+//     constructor(email) {
+//         this.#email = email;
+//     }
+
+//     get email() {
+//         return this.#email;
+//     }
+
+//     set email(newEmail) {
+//         this.#email = newEmail;
+//     }
+// }
+
+// class ContentEditor extends User {
+//     constructor(params) {
+//         // Виклик конструктора батьківського класу User
+//         super(params.email);
+
+//         this.posts = params.posts;
+//     }
+// }
+
+// const editor = new ContentEditor({
+//     email: "mango@mail.com",
+//     posts: []
+// });
+// console.log(editor); // { #email: "mango@mail.com", posts: [] }
+// console.log(editor.email); // "mango@mail.com"
+
+
+

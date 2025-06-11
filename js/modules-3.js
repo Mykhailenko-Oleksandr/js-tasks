@@ -58,6 +58,9 @@
 // console.log(getExtremeElements);
 
 
+
+
+
 // Метод join()
 // Метод масиву join(delimiter) дозволяє об'єднати елементи масиву в рядок.
 // У результуючому рядку елементи будуть розділені символом або групою символів, зазначених у delimiter.
@@ -75,6 +78,10 @@
 // }
 // getLength(["M", "a", "n", "g", "o"])
 // console.log(getLength);
+
+
+
+
 
 
 // Метод split()
@@ -108,6 +115,10 @@
 // console.log(calculateEngravingPrice);
 
 
+
+
+
+
 // Метод slice()
 // Метод масиву slice(begin, end) повертає новий масив, що містить копію частини вихідного масиву, не змінюючи його.
 // Копія створюється від індексу begin до, але не включаючи індекс end.
@@ -125,6 +136,11 @@
 // const nonExtremeEls = fruits.slice(1, fruits.length - 1);
 // const lastThreeEls = fruits.slice(-3);
 // console.log(nonExtremeEls);
+
+
+
+
+
 
 
 // Метод concat()
@@ -145,6 +161,10 @@
 // const newClients = ["Peach", "Houston"];
 // const allClients = oldClients.concat(newClients);
 // console.log(allClients);
+
+
+
+
 
 // Метод indexOf()
 // Метод масиву indexOf(elem) використовується для визначення індексу першого входження елемента elem у масиві.
@@ -173,6 +193,10 @@
 // }
 // getSlice(["Mango", "Poly", "Ajax"], "Jacob")
 // console.log(getSlice);
+
+
+
+
 
 
 // Метод push()
@@ -232,6 +256,9 @@
 // }
 // getEvenNumbers(3, 11);
 // console.log(getEvenNumbers);
+
+
+
 
 
 // Метод includes()
