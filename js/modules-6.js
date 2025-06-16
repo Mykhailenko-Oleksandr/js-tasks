@@ -1,6 +1,18 @@
-// Метод call(), Метод apply(), Метод bind(), this, Метод Object.create(obj), метод isPrototypeOf(),
-// метод obj.hasOwnProperty(key), Ланцюжки прототипів, Класи, метод constructor, Геттери і сеттери,
-// Приватні властивості і методи, Статичні властивості, extends, super(args)
+// Метод call(),
+// Метод apply(),
+// Метод bind(),
+// this,
+// Метод Object.create(obj),
+// метод isPrototypeOf(),
+// метод obj.hasOwnProperty(key),
+// Ланцюжки прототипів,
+// Класи,
+// метод constructor,
+// Геттери і сеттери,
+// Приватні властивості і методи,
+// Статичні властивості,
+// extends,
+// super(args)
 
 
 // Метод call()

@@ -1,0 +1,78 @@
+body {
+  margin: 24px;
+  padding: 0 15px;
+}
+
+.usernames li {
+  padding: 8px;
+  border: 2px dashed tomato;
+  text-transform: uppercase;
+}
+
+.usernames li:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.list-item {
+  padding: 8px;
+  border-width: 2px;
+  border-style: dashed;
+}
+
+.list-item:nth-child(even) {
+  border-color: tomato;
+}
+
+.list-item:nth-child(odd) {
+  border-color: blueviolet;
+}
+
+.list-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+/* метод preventDefault() */
+
+/* body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 32px;
+} */
+
+/* методи focus() і blur() */
+
+/* body {
+  margin: 16px;
+  line-height: 1.5;
+  font-family: sans-serif;
+  letter-spacing: 0.5px;
+}
+
+input {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  display: inline-flex;
+  padding: 4px;
+  margin-right: 2px;
+  margin-left: 2px;
+} */

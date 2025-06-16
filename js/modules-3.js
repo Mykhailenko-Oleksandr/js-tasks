@@ -1,3 +1,18 @@
+// Масиви, 
+// Метод join(), 
+// Метод split(), 
+// Метод slice(), 
+// Метод concat(), 
+// Метод indexOf(), 
+// Метод push(), 
+// Метод includes(), 
+// Цикл for...of, 
+// Псевдомасив arguments, 
+// метод Array.from(), 
+
+
+
+
 // Масиви
 // const fruits = ["apple", "plum", "pear", "orange"];
 // const firstElement = fruits[0];
