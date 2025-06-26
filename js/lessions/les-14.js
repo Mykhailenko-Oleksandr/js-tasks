@@ -216,11 +216,41 @@ const cars = [
     },
 ];
 
+const form = document.querySelector(".js-form");
+const container = document.querySelector(".js-list");
+
+form.addEventListener("submit", handleSubmit);
+
+
+function createMarkup(arr) {
+    return arr.map((car) => `
+    <li class="car-card">
+      <img src="${car.img}" alt="${car.type}" class="car-image"/>
+      <h2 class="car-title">${car.car}</h2>
+      <h3 class="car-type">${car.type}</h3>
+      <p class="car-price">${car.price}$</p>
+    </li>
+  `).join("");
+}
+
+
+container.style.display = "flex";
+container.style.flexWrap = "wrap";
+container.style.gap = "25px";
+
+container.insertAdjacentHTML("beforeend", createMarkup(cars));
+
+function handleSubmit(event) {
+    event.preventDefault();
 
 
 
+    const query = event.target.elements.query.value;
+    const options = event.target.elements.options.value;
 
 
+    const result = cars
+        .filter((item) => item[options].toLowerCase().includes(query.toLowerCase()));
 
-
-
+    container.innerHTML = createMarkup(result);
+}
