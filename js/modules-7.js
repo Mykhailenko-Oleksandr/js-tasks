@@ -339,7 +339,7 @@
 
 // Власні атрибути дозволяють додати до тегу довільний атрибут і отримати його значення в JavaScript.
 
-// < button type = "button" data - action="save" > Save text</ >
+// < button type = "button" data-action="save" > Save text</ >
 //     <button type="button" data-action="close">Close editor</button>
 
 
