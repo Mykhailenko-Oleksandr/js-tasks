@@ -1,58 +1,89 @@
+// localeStorage
 
-const startBtn = document.querySelector('#startBtn')
-const score = document.querySelector('#score')
-const gameField = document.querySelector('#gameField')
 
-startBtn.addEventListener('click', onStartBtnClick)
+// const LS_KEY = 'Array of names'
+// const names = ['Alice', 'Kate', 'Emma']
 
-function onStartBtnClick(event) {
 
-    gameField.innerHTML = ''
+// Збереження
+// Чому треба використовувати метод JSON.stringify
 
-    const gameContainer = document.createElement('div')
-    gameContainer.style.width = '300px'
-    gameContainer.style.height = '300px'
-    gameContainer.style.border = '5px solid black'
 
-    gameField.append(gameContainer)
+// localStorage.setItem(LS_KEY, JSON.stringify(names));
 
-    const gameBall = document.createElement('div')
-    gameBall.style.width = '30px'
-    gameBall.style.height = '30px'
-    gameBall.style.backgroundColor = 'red'
-    gameBall.style.borderRadius = '50%'
-    gameBall.classList.add('ball')
-    gameBall.style.position = 'relative'
-    gameBall.style.top = `${Math.floor(Math.random() * (270 + 1))}px`
-    gameBall.style.left = `${Math.floor(Math.random() * (270 + 1))}px`
 
-    gameContainer.append(gameBall)
 
-    console.dir(gameBall)
+// Читання
+// Чому треба використовувати метод JSON.parse
 
-    let timeOnClickMS = 1500;
-    let timeOnClick;
+// const value = localStorage.getItem(JSON.parse(LS_KEY))
 
-    gameBall.addEventListener('click', () => {
-        score.textContent = Number(score.textContent) + 1
 
-        timeOnClickMS -= 10;
 
-        gameBall.remove()
+// Видалення
 
-        gameBall.style.top = `${Math.floor(Math.random() * (270 + 1))}px`
-        gameBall.style.left = `${Math.floor(Math.random() * (270 + 1))}px`
-        gameContainer.append(gameBall)
-        clearTimeout(timeOnClick)
-        timeOnClick = setTimeout(onEndGame, timeOnClickMS)
-        console.log(timeOnClick);
 
-    })
+// localStorage.removeItem(LS_KEY)
 
-    function onEndGame() {
-        alert(`Не встиг. Ваш рахунок ${score.textContent}`)
-        score.textContent = '0'
-    }
-}
+
+
+// localStorage не може зберігати функції
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+// const STORAGE_KEY = 'feedback-msg';
+
+// const form = document.querySelector('.feedback-form')
+// const textarea = form.querySelector('textarea');
+
+// form.addEventListener('submit', hanleSubmit)
+// textarea.addEventListener('input', onTextareaInput)
+
+// populateTextarea();
+
+// - Скасовуємо стандартну поведінку
+// - Відправляємо повідомлення зі сховища
+// - Очищуємо форму
+
+// function hanleSubmit(event) {
+//     event.preventDefault();
+//     event.currentTarget.reset();
+//     localStorage.removeItem(STORAGE_KEY)
+// }
+
+
+// - Отримуємо значення поля
+// - Зберігаємо його у сховище
+
+// function onTextareaInput(event) {
+//     const message = event.target.value;
+//     localStorage.setItem(STORAGE_KEY, message)
+
+// }
+
+
+// function populateTextarea() {
+//     const savedMassege = localStorage.getItem(STORAGE_KEY);
+//     if (savedMassege) {
+//         textarea.value = savedMassege;
+//     }
+// }
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 
